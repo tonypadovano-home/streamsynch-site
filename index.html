@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamSync — Your Shows. Finally Sorted.</title>
+  <meta name="description" content="Stop losing track of what you're watching. StreamSync is coming soon.">
+  <meta property="og:title" content="StreamSync — Your Shows. Finally Sorted.">
+  <meta property="og:description" content="Too many shows. Too many services. Not enough clarity. StreamSync fixes that.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://streamsynch.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #0a0a0f; --bg-subtle: #12121a; --text: #e8e8ed; --text-muted: #8a8a9a; --accent: #6366f1; --accent-hover: #818cf8; --accent-glow: rgba(99, 102, 241, 0.15); --border: rgba(255, 255, 255, 0.06); }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    .glow { position: fixed; top: -20vh; left: 50%; transform: translateX(-50%); width: 80vw; height: 60vh; background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    main { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 1.5rem; text-align: center; min-height: 100vh; }
+    .hero { max-width: 600px; margin: 0 auto; }
+    .logo-text { font-size: 1rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+    h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .tagline { font-size: clamp(1.05rem, 2.5vw, 1.25rem); line-height: 1.6; color: var(--text-muted); margin-bottom: 3rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .signup-wrapper { margin-bottom: 1.5rem; }
+    .signup-form { display: flex; gap: 0.5rem; max-width: 440px; margin: 0 auto; }
+    .signup-form input[type="email"] { flex: 1; padding: 0.85rem 1.1rem; font-size: 1rem; font-family: inherit; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 10px; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .signup-form input[type="email"]::placeholder { color: var(--text-muted); }
+    .signup-form input[type="email"]:focus { border-color: var(--accent); }
+    .signup-form button { padding: 0.85rem 1.6rem; font-size: 1rem; font-weight: 600; font-family: inherit; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; white-space: nowrap; transition: background 0.2s, transform 0.1s; }
+    .signup-form button:hover { background: var(--accent-hover); }
+    .signup-form button:active { transform: scale(0.97); }
+    .form-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; }
+    .signup-success { display: none; font-size: 1.05rem; color: var(--accent-hover); font-weight: 500; padding: 0.85rem 0; }
+    .signup-wrapper.submitted .signup-form { display: none; }
+    .signup-wrapper.submitted .form-note { display: none; }
+    .signup-wrapper.submitted .signup-success { display: block; }
+    .hints { margin-top: 4rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; max-width: 520px; }
+    .hint { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.03em; padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 100px; white-space: nowrap; }
+    footer { position: relative; z-index: 1; text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    @media (max-width: 520px) { .signup-form { flex-direction: column; } .signup-form button { width: 100%; } .hints { gap: 0.75rem; } }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <main>
+    <div class="hero">
+      <div class="logo-text">StreamSync</div>
+      <h1>Your shows.<br>Netflix, Hulu, Disney+<br>and more.<br>Finally sorted.</h1>
+      <p class="tagline">Too many shows across too many services. You've lost track of what you're watching, what's waiting, and what moved. We're building something to fix that.</p>
+      <div class="signup-wrapper" id="signupWrapper">
+        <form class="signup-form" id="signupForm" action="#" method="POST">
+          <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit">Get Early Access</button>
+        </form>
+        <p class="form-note">Be the first to know when we launch. No spam.</p>
+        <p class="signup-success">You're on the list. We'll be in touch.</p>
+      </div>
+      <div class="hints">
+        <span class="hint">One watchlist</span>
+        <span class="hint">Netflix, Hulu, Disney+ &amp; more</span>
+        <span class="hint">Zero guesswork</span>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2026 StreamSync &middot; <a href="mailto:hello@streamsynch.com">hello@streamsynch.com</a></p>
+  </footer>
+  <script>
+    const form = document.getElementById('signupForm');
+    const wrapper = document.getElementById('signupWrapper');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = form.querySelector('input[type="email"]').value;
+      console.log('Email submitted:', email);
+      wrapper.classList.add('submitted');
+    });
+  </script>
+</body>
+</html>
